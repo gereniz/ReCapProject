@@ -1,10 +1,11 @@
 ﻿using System;
+using Entities.Abstract;
+
 namespace Entities.Concrete
 {
-    public class Color
+    public class Color : IEntity
     {
-        public Color()
-        {
-        }
+        public int id { get; set; }
+        public string colorname { get; set; }
     }
 }

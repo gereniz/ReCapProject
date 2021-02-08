@@ -1,10 +1,12 @@
 ﻿using System;
+using Entities.Abstract;
+
 namespace Entities.Concrete
 {
-    public class Brand
+    public class Brand : IEntity
     {
-        public Brand()
-        {
-        }
+        public int id { get; set; }
+        public string brandname { get; set; }
+
     }
 }
