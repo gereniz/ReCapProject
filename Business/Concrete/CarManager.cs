@@ -16,11 +16,6 @@ namespace Business.Concrete
             _carDal = carDal;
         }
 
-        public List<Car> Delete()
-        {
-            return _carDal.Delete(int id);
-        }
-
         public List<CarDetailDTO> carDetailDTOs()
         {
             return _carDal.GetCarDetailDTOs();
@@ -39,6 +34,11 @@ namespace Business.Concrete
         public List<Car> GetCarsByColorId(int id)
         {
             return _carDal.GetAll(c => c.colorid == id); ;
+        }
+
+        public void Delete(Car car)
+        {
+             _carDal.Delete(car);
         }
     }
 }
