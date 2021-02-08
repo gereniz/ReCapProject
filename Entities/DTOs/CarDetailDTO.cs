@@ -1,15 +1,13 @@
-﻿using Core.Entities;
-
-namespace Entities.Concrete
+﻿using System;
+namespace Entities.DTOs
 {
-    public class Car : IEntity
+    public class CarDetailDTO
     {
         public int id { get; set; }
-        public int brandid { get; set; }
-        public int colorid { get; set; }
+        public string brandname { get; set; }
+        public string colorname { get; set; }
         public int modelyear { get; set; }
         public decimal dailyprice { get; set; }
         public string description { get; set; }
-
     }
 }

@@ -1,62 +1,33 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
+﻿using System.Collections.Generic;
+using Core.DataAccess.EntityFramework;
 using DataAccess.Abstract;
 using Entities.Concrete;
-using Microsoft.EntityFrameworkCore;
+using Entities.DTOs;
+using System.Linq;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class EFCarDal : ICarDal
+    public class EFCarDal : EFEntityRepositoryBase<Car, DomainContext>, ICarDal
     {
-        public void Add(Car entity)
+        public List<CarDetailDTO> GetCarDetailDTOs()
         {
-            //IDisposable pattern implementation of c#
-            using (DomainContext domainContext = new DomainContext()) //using bittiği an bellek temizlenir
+            using(DomainContext domainContext = new DomainContext())
             {
-                var addedEntity = domainContext.Entry(entity);
-                addedEntity.State = EntityState.Added;
-                domainContext.SaveChanges();
-            }
-        }
-
-        public void Delete(Car entity)
-        {
-            using (DomainContext domainContext = new DomainContext())
-            {
-                var deletedEntity = domainContext.Entry(entity);
-                deletedEntity.State = EntityState.Deleted;
-                domainContext.SaveChanges();
-            }
-        }
-
-
-        public Car Get(Expression<Func<Car, bool>> filter)
-        {
-            using (DomainContext domainContext = new DomainContext())
-            {
-                return domainContext.Set<Car>().SingleOrDefault(filter);
-            }
-        }
-
-
-        public List<Car> GetAll(Expression<Func<Car, bool>> filter = null)
-        {
-            using (DomainContext domainContext = new DomainContext())
-            {
-                return filter == null ? domainContext.Set<Car>().ToList() : domainContext.Set<Car>().Where(filter).ToList();
-            }
-        }
-
-
-        public void Update(Car entity)
-        {
-            using (DomainContext domainContext = new DomainContext())
-            {
-                var updatedEntity = domainContext.Entry(entity);
-                updatedEntity.State = EntityState.Modified;
-                domainContext.SaveChanges();
+                var result = from c in domainContext.car
+                             join b in domainContext.brand
+                             on c.brandid equals b.id
+                             join clr in domainContext.color
+                             on c.colorid equals clr.id
+                             select new CarDetailDTO
+                             {
+                                 id = c.id,
+                                 brandname = b.brandname,
+                                 colorname = clr.colorname,
+                                 dailyprice = c.dailyprice,
+                                 modelyear = c.modelyear,
+                                 description = c.description
+                             };
+                return result.ToList();
             }
         }
     }
