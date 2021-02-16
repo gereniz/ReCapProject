@@ -8,12 +8,16 @@ namespace DataAccess.Concrete.EntityFramework
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseNpgsql("Server=localhost;Database=ReCapProjectDatabase;User ID=postgres;Password=*******;");
+            optionsBuilder.UseNpgsql("Server=localhost;Database=ReCapProjectDatabase;User ID=postgres;Password=Gg030912051996*;");
         }
 
-        public DbSet<Car> car { get; set; }
-        public DbSet<Brand> brand { get; set; }
-        public DbSet<Color> color { get; set; }
+        public DbSet<Cars> cars { get; set; }
+        public DbSet<Brands> brands { get; set; }
+        public DbSet<Colors> colors { get; set; }
+        public DbSet<Users> users { get; set; }
+        public DbSet<Customers> customers { get; set; }
+        public DbSet<Rentals> rentals { get; set; }
+
 
     }
 }

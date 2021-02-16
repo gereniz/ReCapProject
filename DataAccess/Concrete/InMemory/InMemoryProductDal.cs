@@ -10,45 +10,45 @@ namespace DataAccess.Concrete
 {
     public class InMemoryCarDal : ICarDal
     {
-        List<Car> _cars;
+        List<Cars> _cars;
         public InMemoryCarDal()
         {
             {
-                _cars = new List<Car>
+                _cars = new List<Cars>
                 {
-                    new Car{id=1 , brandid=1 , colorid=1 , modelyear=2000 , dailyprice= 50 , description="BMW"},
-                    new Car{id=2 , brandid=2 , colorid=2 , modelyear=2010 , dailyprice= 100 , description="AUDI"},
-                    new Car{id=3 , brandid=3 , colorid=3 , modelyear=2020 , dailyprice= 150, description="HYUNDAI"},
+                    new Cars{id=1 , brandid=1 , colorid=1 , modelyear=2000 , dailyprice= 50 , description="BMW"},
+                    new Cars{id=2 , brandid=2 , colorid=2 , modelyear=2010 , dailyprice= 100 , description="AUDI"},
+                    new Cars{id=3 , brandid=3 , colorid=3 , modelyear=2020 , dailyprice= 150, description="HYUNDAI"},
                 };
             }
         }
-        public void Add(Car car)
+        public void Add(Cars car)
         {
             _cars.Add(car);
         }
 
-        public void Delete(Car car)
+        public void Delete(Cars car)
         {
-            Car carToDelete = _cars.SingleOrDefault(c => c.id == car.id);
+            Cars carToDelete = _cars.SingleOrDefault(c => c.id == car.id);
             _cars.Remove(carToDelete);
         }
 
-        public Car Get(Expression<Func<Car, bool>> filter)
+        public Cars Get(Expression<Func<Cars, bool>> filter)
         {
             throw new NotImplementedException();
         }
 
-        public List<Car> GetAll()
+        public List<Cars> GetAll()
         {
             return _cars;
         }
 
-        public List<Car> GetAll(Expression<Func<Car, bool>> filter = null)
+        public List<Cars> GetAll(Expression<Func<Cars, bool>> filter = null)
         {
             throw new NotImplementedException();
         }
 
-        public List<Car> GetByBrandId(int BrandId)
+        public List<Cars> GetByBrandId(int BrandId)
         {
             return _cars.Where(c => c.brandid == BrandId).ToList();
         }
@@ -58,9 +58,9 @@ namespace DataAccess.Concrete
             throw new NotImplementedException();
         }
 
-        public void Update(Car car)
+        public void Update(Cars car)
         {
-            Car carToUpdate = _cars.SingleOrDefault(c => c.id == car.id);
+            Cars carToUpdate = _cars.SingleOrDefault(c => c.id == car.id);
             carToUpdate.brandid = car.brandid;
             carToUpdate.colorid = car.colorid;
             carToUpdate.modelyear = car.modelyear;

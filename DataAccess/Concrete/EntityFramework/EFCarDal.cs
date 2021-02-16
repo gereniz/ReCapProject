@@ -7,16 +7,16 @@ using System.Linq;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class EFCarDal : EFEntityRepositoryBase<Car, DomainContext>, ICarDal
+    public class EFCarDal : EFEntityRepositoryBase<Cars, DomainContext>, ICarDal
     {
         public List<CarDetailDTO> GetCarDetailDTOs()
         {
             using(DomainContext domainContext = new DomainContext())
             {
-                var result = from c in domainContext.car
-                             join b in domainContext.brand
+                var result = from c in domainContext.cars
+                             join b in domainContext.brands
                              on c.brandid equals b.id
-                             join clr in domainContext.color
+                             join clr in domainContext.colors
                              on c.colorid equals clr.id
                              select new CarDetailDTO
                              {

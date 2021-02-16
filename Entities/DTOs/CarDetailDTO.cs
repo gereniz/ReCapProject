@@ -1,7 +1,9 @@
 ﻿using System;
+using Core.Entities;
+
 namespace Entities.DTOs
 {
-    public class CarDetailDTO
+    public class CarDetailDTO : IDTO
     {
         public int id { get; set; }
         public string brandname { get; set; }
