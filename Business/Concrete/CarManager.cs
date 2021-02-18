@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Business.Abstract;
 using Business.Constants;
+using Business.ValidationRules.FluentValidator;
+using Core.CrossCuttingConcerns.Validator;
 using Core.Unitilies.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -21,10 +23,7 @@ namespace Business.Concrete
 
         public IResult Add(Cars car)
         {
-            if (car.dailyprice < 0)
-            {
-                return new ErrorResult(Messages.Invalid);
-            }
+            ValidationTool.Validator(new CarValidator(), car);
             _carDal.Add(car);
             return new SuccessResult(Messages.Added);
         }

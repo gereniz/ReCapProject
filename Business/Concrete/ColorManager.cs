@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Business.Abstract;
 using Business.Constants;
+using Business.ValidationRules.FluentValidator;
+using Core.CrossCuttingConcerns.Validator;
 using Core.Unitilies.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -18,6 +20,7 @@ namespace Business.Concrete
         }
         public IResult Add(Colors color)
         {
+            ValidationTool.Validator(new ColorValidator(), color);
             _colorDal.Add(color);
             return new SuccessResult(Messages.Added);
         }
