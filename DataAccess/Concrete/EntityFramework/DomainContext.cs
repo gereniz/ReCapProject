@@ -8,7 +8,7 @@ namespace DataAccess.Concrete.EntityFramework
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseNpgsql("Server=localhost;Database=ReCapProjectDatabase;User ID=postgres;Password=Gg030912051996*;");
+            optionsBuilder.UseNpgsql("Server=localhost;Database=ReCapProjectDatabase;User ID=postgres;Password=*******;");
         }
 
         public DbSet<Cars> cars { get; set; }
