@@ -11,6 +11,6 @@ namespace Business.Abstract
 
         IResult Add(Rentals rental);
 
-        IResult Update(Rentals rental);
+        IResult Update(Rentals rental, int id);
     }
 }

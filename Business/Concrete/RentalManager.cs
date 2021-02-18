@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Business.Abstract;
 using Business.Constants;
 using Core.Unitilies.Results;
@@ -31,9 +32,14 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Rentals>>(_rentalDal.GetAll(), Messages.Listed);
         }
 
-        public IResult Update(Rentals rental)
+        public IResult Update(Rentals rental,int id)
         {
-            _rentalDal.Update(rental);
+            var updateRental = _rentalDal.GetAll().SingleOrDefault(r => r.id == id);
+            updateRental.carid = rental.carid;
+            updateRental.customerid = rental.customerid;
+            updateRental.rentdate = rental.rentdate;
+            updateRental.returndate = rental.returndate;
+            _rentalDal.Update(updateRental);
             return new SuccessResult(Messages.Updated);
         }
     }

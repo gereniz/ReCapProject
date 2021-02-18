@@ -36,9 +36,14 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Users>>(_userDal.GetAll(),Messages.Listed);
         }
 
-        public IResult Update(Users user)
+        public IResult Update(Users user,int id)
         {
-            _userDal.Update(user);
+            var updateUser= _userDal.GetAll().SingleOrDefault(u => u.id == id);
+            updateUser.name = user.name;
+            updateUser.surname = user.surname;
+            updateUser.email = user.email;
+            updateUser.password = user.password;
+            _userDal.Update(updateUser);
             return new SuccessResult(Messages.Updated);
         }
     }

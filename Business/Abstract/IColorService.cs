@@ -13,6 +13,6 @@ namespace Business.Abstract
 
         IResult Delete(int id);
 
-        IResult Update(Colors color);
+        IResult Update(Colors color,int id);
     }
 }

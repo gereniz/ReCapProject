@@ -44,9 +44,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPut("update")]
-        public IActionResult Update(Brands brand)
+        public IActionResult Update(Brands brand, int id)
         {
-            var result = _brandService.Update(brand);
+            var result = _brandService.Update(brand,id);
             if (result.Success)
             {
                 return Ok(result);

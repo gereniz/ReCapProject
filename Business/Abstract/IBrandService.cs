@@ -13,6 +13,6 @@ namespace Business.Abstract
 
         IResult Delete(int id);
 
-        IResult Update(Brands brand);
+        IResult Update(Brands brand, int id);
     }
 }

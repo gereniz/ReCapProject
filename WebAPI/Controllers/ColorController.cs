@@ -47,9 +47,9 @@ namespace WebAPI.Controllers
 
        
         [HttpPut("update")]
-        public IActionResult Update(Colors color)
+        public IActionResult Update(Colors color, int id)
         {
-            var result = _colorService.Update(color);
+            var result = _colorService.Update(color,id);
             if (result.Success)
             {
                 return Ok(result);

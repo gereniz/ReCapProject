@@ -13,6 +13,6 @@ namespace Business.Abstract
 
         IResult Delete(int id);
 
-        IResult Update(Customers customer);
+        IResult Update(Customers customer, int id);
     }
 }

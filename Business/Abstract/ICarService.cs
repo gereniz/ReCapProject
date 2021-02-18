@@ -20,7 +20,7 @@ namespace Business.Abstract
 
         IResult Delete(int id);
 
-        IResult Update(Cars car);
+        IResult Update(Cars car,int id);
 
     }
 }

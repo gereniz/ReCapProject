@@ -47,9 +47,9 @@ namespace WebAPI.Controllers
 
 
         [HttpPut("update")]
-        public IActionResult Update(Rentals rental)
+        public IActionResult Update(Rentals rental, int id)
         {
-            var result = _rentalService.Update(rental);
+            var result = _rentalService.Update(rental,id);
             if (result.Success)
             {
                 return Ok(result);

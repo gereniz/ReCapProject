@@ -38,9 +38,11 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Brands>>(_brandDal.GetAll(), Messages.Listed);
         }
 
-        public IResult Update(Brands brand)
+        public IResult Update(Brands brand,int id)
         {
-            _brandDal.Update(brand);
+            var updateBrand = _brandDal.GetAll().SingleOrDefault(b => b.id == id);
+            updateBrand.brandname = brand.brandname;
+            _brandDal.Update(updateBrand);
             return new SuccessResult(Messages.Updated);
         }
     }

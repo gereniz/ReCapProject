@@ -52,9 +52,9 @@ namespace WebAPI.Controllers
 
 
         [HttpPut("update")]
-        public IActionResult Update(Users user)
+        public IActionResult Update(Users user, int id)
         {
-            var result = _userService.Update(user);
+            var result = _userService.Update(user,id);
             if (result.Success)
             {
                 return Ok(result);

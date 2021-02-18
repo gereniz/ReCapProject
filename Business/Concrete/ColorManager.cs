@@ -34,9 +34,11 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Colors>>(_colorDal.GetAll(), Messages.Listed);
         }
 
-        public IResult Update(Colors color)
+        public IResult Update(Colors color,int id)
         {
-            _colorDal.Update(color);
+            var updateColor= _colorDal.GetAll().SingleOrDefault(c => c.id == id);
+            updateColor.colorname = color.colorname;
+            _colorDal.Update(updateColor);
             return new SuccessResult(Messages.Updated);
         }
     }
