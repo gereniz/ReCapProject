@@ -56,10 +56,15 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Cars>>(_carDal.GetAll(p => p.colorid == id));
         }
 
-        public IResult Update(Cars car)
+        public IResult Update(Cars car,int id)
         {
-            
-            _carDal.Update(car);
+            var updateCar = _carDal.GetAll().SingleOrDefault(c => c.id == id);
+            updateCar.brandid = car.brandid;
+            updateCar.colorid = car.colorid;
+            updateCar.dailyprice = car.dailyprice;
+            updateCar.description = car.description;
+            updateCar.modelyear = car.modelyear;
+            _carDal.Update(updateCar);
             return new SuccessResult(Messages.Updated);
         }
     }

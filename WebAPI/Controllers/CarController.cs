@@ -60,10 +60,10 @@ namespace WebAPI.Controllers
 
         
         [HttpPut("update")]
-        public IActionResult Update(Cars car)
+        public IActionResult Update(Cars car,int id)
         {
             
-            var result = _carService.Update(car);
+            var result = _carService.Update(car,id);
             if (result.Success)
             {
                 return Ok(result);
