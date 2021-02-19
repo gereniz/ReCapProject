@@ -12,9 +12,16 @@
     <Folder Include="Unitilies\Results\" />
     <Folder Include="CrossCuttingConcerns\" />
     <Folder Include="CrossCuttingConcerns\Validator\" />
+    <Folder Include="Unitilies\Interceptors\" />
+    <Folder Include="Aspects\" />
+    <Folder Include="Aspects\Autofac\" />
+    <Folder Include="Aspects\Autofac\Validation\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="5.0.2" />
     <PackageReference Include="FluentValidation" Version="9.5.1" />
+    <PackageReference Include="Autofac" Version="6.1.0" />
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="7.1.0" />
+    <PackageReference Include="Autofac.Extras.DynamicProxy" Version="6.0.0" />
   </ItemGroup>
 </Project>

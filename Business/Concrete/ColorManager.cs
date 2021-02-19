@@ -4,6 +4,7 @@ using System.Linq;
 using Business.Abstract;
 using Business.Constants;
 using Business.ValidationRules.FluentValidator;
+using Core.Aspects.Autofac.Validation;
 using Core.CrossCuttingConcerns.Validator;
 using Core.Unitilies.Results;
 using DataAccess.Abstract;
@@ -18,6 +19,7 @@ namespace Business.Concrete
         {
             _colorDal = colorDal;
         }
+        [ValidationAspect(typeof(ColorValidator))]
         public IResult Add(Colors color)
         {
             ValidationTool.Validator(new ColorValidator(), color);

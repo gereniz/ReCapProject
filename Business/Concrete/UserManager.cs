@@ -4,6 +4,7 @@ using System.Linq;
 using Business.Abstract;
 using Business.Constants;
 using Business.ValidationRules.FluentValidator;
+using Core.Aspects.Autofac.Validation;
 using Core.CrossCuttingConcerns.Validator;
 using Core.Unitilies.Results;
 using DataAccess.Abstract;
@@ -18,7 +19,7 @@ namespace Business.Concrete
         {
             _userDal = userDal;
         }
-
+        [ValidationAspect(typeof(UserValidator))]
         public IResult Add(Users user)
         {
             ValidationTool.Validator(new UserValidator(),user);

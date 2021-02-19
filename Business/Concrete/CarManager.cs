@@ -4,6 +4,7 @@ using System.Linq;
 using Business.Abstract;
 using Business.Constants;
 using Business.ValidationRules.FluentValidator;
+using Core.Aspects.Autofac.Validation;
 using Core.CrossCuttingConcerns.Validator;
 using Core.Unitilies.Results;
 using DataAccess.Abstract;
@@ -20,7 +21,7 @@ namespace Business.Concrete
         {
             _carDal = carDal;
         }
-
+        [ValidationAspect(typeof(CarValidator))]
         public IResult Add(Cars car)
         {
             ValidationTool.Validator(new CarValidator(), car);
